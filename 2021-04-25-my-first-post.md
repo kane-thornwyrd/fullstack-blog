@@ -1,3 +1,7 @@
+---
+author: Jean-cédric Thérond
+---
+
 # My first post
 
 Hello world!
