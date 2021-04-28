@@ -29,9 +29,6 @@
   $if(math)$
   $math$
   $endif$
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
   $for(header-includes)$
   $header-includes$
   $endfor$
@@ -43,27 +40,34 @@
     $include-before$
     $endfor$
     $if(title)$
-    <h2>$title$</h2>
-    $if(subtitle)$
-    <p class="subtitle">$subtitle$</p>
+      <hr class="Header-item border d-flex flex-items-center" />
+      <h2 class="Header-item f4 d-flex flex-items-center Header-item--full">$title$</h2>
     $endif$
-    $for(author)$
-    <p class="author">$author$</p>
-    $endfor$
     $if(date)$
-    <p class="date">$date$</p>
+      <p class="Header-item text-italic branch-name date">$date$</p>
     $endif$
   </header>
+
+  $if(table-of-contents)$
+  <section class="toc anim-fade-in m-4">
+    <nav class="Box Box--condensed" id="$idprefix$TOC" role="doc-toc">
+      $if(toc-title)$
+      <div class="Box-header">
+        <h3 class="Box-title" id="$idprefix$toc-title">$toc-title$</h3>
+      </div>
+      $endif$
+      <div class="Box-body">
+        $table-of-contents$
+      </div>
+    </nav>
+  </section>
   $endif$
-  $if(toc)$
-  <nav id="$idprefix$TOC" role="doc-toc">
-    $if(toc-title)$
-    <h2 id="$idprefix$toc-title">$toc-title$</h2>
-    $endif$
-    $table-of-contents$
-  </nav>
+
+  $if(subtitle)$
+  <p class="text-italic mx-4">$subtitle$</p>
   $endif$
-  <section class="anim-fade-in m-4">
+
+  <section class="m-6">
     $body$
   </section>
   $for(include-after)$
